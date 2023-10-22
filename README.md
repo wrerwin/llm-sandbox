@@ -20,53 +20,57 @@ For most purposes, Miniconda is sufficient.
 
 To get a copy of this project, clone the repository to your local machine:
 
-\```bash
+```bash
 git clone https://github.com/wrerwin/llm-sandbox
 cd llm-sandbox
-\```
+```
 
 ## 3. Creating a Conda Environment:
 
 Create a new Conda environment:
 
-\```bash
+```bash
 conda create --name openai_env python=3.8
-\```
+```
 
 Activate the Conda environment:
 
-\```bash
+```bash
 conda activate openai_env
-\```
+```
 
 ## 4. Setting up the `OPENAI_API_KEY`:
 
 For security reasons, it's recommended to set your OpenAI API key as an environment variable. This way, you don't accidentally expose the API key in your scripts or notebooks.
 
-On macOS and Linux:
+### On macOS and Linux:
 
-\```bash
+```bash
 cd $CONDA_PREFIX
 mkdir -p ./etc/conda/deactivate.d  
 mkdir -p ./etc/conda/activate.d  
 touch -p ./etc/conda/activate.d/env_vars.sh 
 touch -p ./etc/conda/deactivate.d/env_vars.sh 
-\```
+```
 
-Navigate to .`/etc/conda/activate.d/env_vars.sh` and edit it
+Navigate to .`/etc/conda/activate.d/env_vars.sh` and edit it: 
+```
 export OPENAI_API_KEY=`<YOUR_OPENAI_API_KEY>`
-
-Navigate to .`/etc/conda/deactivate.d/env_vars.sh` and edit it
+```
+Navigate to .`/etc/conda/deactivate.d/env_vars.sh` and edit it:
+```
 unset OPENAI_API_KEY
+```
 
-On Windows (using Command Prompt):
+### On Windows (using Command Prompt):
 
-\```bash
+```
 setx OPENAI_API_KEY "<YOUR_OPENAI_API_KEY>"
-\```
+```
 
 ## 5. Installing Dependencies:
+Navigate to the repo directory, and install requirements.
 
-\```bash
+```
 pip install -r requirements.txt
-\```
+```
