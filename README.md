@@ -1,6 +1,3 @@
-### NOTE:
-This file was authored by GPT-4 with instructions to set up a repo with my preferences.
-
 # OpenAI GPT-4 Repository Setup
 
 This guide walks you through the process of setting up a Conda environment tailored for a project using the OpenAI GPT-4 API.
@@ -24,11 +21,9 @@ For most purposes, Miniconda is sufficient.
 To get a copy of this project, clone the repository to your local machine:
 
 \```bash
-git clone [YOUR_REPOSITORY_LINK]
-cd [YOUR_REPOSITORY_NAME]
+git clone https://github.com/wrerwin/llm-sandbox
+cd llm-sandbox
 \```
-
-Replace `[YOUR_REPOSITORY_LINK]` with the actual link to your Git repository and `[YOUR_REPOSITORY_NAME]` with the name of your repository.
 
 ## 3. Creating a Conda Environment:
 
@@ -51,35 +46,27 @@ For security reasons, it's recommended to set your OpenAI API key as an environm
 On macOS and Linux:
 
 \```bash
-echo "export OPENAI_API_KEY=YOUR_API_KEY" >> ~/.bashrc
-source ~/.bashrc
+cd $CONDA_PREFIX
+mkdir -p ./etc/conda/deactivate.d  
+mkdir -p ./etc/conda/activate.d  
+touch -p ./etc/conda/activate.d/env_vars.sh 
+touch -p ./etc/conda/deactivate.d/env_vars.sh 
 \```
+
+Navigate to .`/etc/conda/activate.d/env_vars.sh` and edit it
+export OPENAI_API_KEY=`<YOUR_OPENAI_API_KEY>`
+
+Navigate to .`/etc/conda/deactivate.d/env_vars.sh` and edit it
+unset OPENAI_API_KEY
 
 On Windows (using Command Prompt):
 
 \```bash
-setx OPENAI_API_KEY "YOUR_API_KEY"
+setx OPENAI_API_KEY "<YOUR_OPENAI_API_KEY>"
 \```
 
-Replace `YOUR_API_KEY` with your actual OpenAI API key.
-
 ## 5. Installing Dependencies:
-
-Assuming you have a `requirements.txt` file for your Python packages, you can install them using:
 
 \```bash
 pip install -r requirements.txt
 \```
-
----
-
-## Usage
-
-Provide a brief description or steps on how to use the project, scripts, or apps in the repository.
-
----
-
-## License
-
-Your licensing information here.
-
